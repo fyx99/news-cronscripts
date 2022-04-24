@@ -10,11 +10,8 @@ docker wait $CONTAINERID
 START=$(docker inspect --format='{{.State.StartedAt}}' ${CONTAINERID})
 STOP=$(docker inspect --format='{{.State.FinishedAt}}' ${CONTAINERID})
 STATUS=$(docker container inspect -f '{{.State.ExitCode}}' ${CONTAINERID})
-
 START_TIMESTAMP=$(date --date=$START +%s)
 STOP_TIMESTAMP=$(date --date=$STOP +%s)
-echo $START_TIMESTAMP
-echo $STOP_TIMESTAMP
 MINUTES=$(( ($STOP_TIMESTAMP - $START_TIMESTAMP) / 60 ))
-echo $MINUTES
+
 docker exec postgres psql -U postgres -d newsaggregate -c "INSERT INTO Runs (task, status, duration) values ('RSS', '${STATUS}', '${MINUTES}');"
