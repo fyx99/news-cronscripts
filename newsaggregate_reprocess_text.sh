@@ -13,4 +13,4 @@ START_TIMESTAMP=$(date --date=$START +%s)
 STOP_TIMESTAMP=$(date --date=$STOP +%s)
 MINUTES=$(( ($STOP_TIMESTAMP - $START_TIMESTAMP) / 60 ))
 
-docker exec postgres psql -U postgres -d newsaggregate -c "INSERT INTO Runs (task, status, duration) values ('REPROCESS_TEXT', '${STATUS}', '${MINUTES}');"
+docker exec postgres psql -U postgres -d newsaggregate -c "INSERT INTO Runs (task, containerid, status, duration) values ('REPROCESS_TEXT', '${CONTAINERID}', '${STATUS}', '${MINUTES}');"
