@@ -1,9 +1,9 @@
 #!/bin/sh
 
 
-qdocker pull fxxy/news-aggregate 
+docker pull fxxy/news-aggregate-ml
 
-CONTAINERID=$(docker run -d -e TASK='RSS' -e DB_NAME='newsaggregate' -e DB_HOST='172.17.0.2' -e DB_USER='postgres' -e DB_PW='u3fph3ßü98fg43f34f3' -e DB_PORT='5432' fxxy/news-aggregate)
+CONTAINERID=$(docker run -d -e TASK='RSS' -e DB_NAME='newsaggregate' -e DB_HOST='172.17.0.2' -e DB_USER='postgres' -e DB_PW='u3fph3ßü98fg43f34f3' -e DB_PORT='5432' fxxy/news-aggregate-ml)
 echo $CONTAINERID
 docker wait $CONTAINERID
 
@@ -14,4 +14,4 @@ START_TIMESTAMP=$(date --date=$START +%s)
 STOP_TIMESTAMP=$(date --date=$STOP +%s)
 MINUTES=$(( ($STOP_TIMESTAMP - $START_TIMESTAMP) / 60 ))
 
-docker exec postgres psql -U postgres -d newsaggregate -c "INSERT INTO Runs (task, status, duration) values ('RSS', '${STATUS}', '${MINUTES}');"
+docker exec postgres psql -U postgres -d newsaggregate -c "INSERT INTO Runs (task, containerid, status, duration) values ('RSS', '${CONTAINERID}', '${STATUS}', '${MINUTES}');"
