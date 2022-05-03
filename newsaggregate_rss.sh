@@ -1,9 +1,9 @@
 #!/bin/sh
 
 
-docker pull fxxy/news-aggregate-ml
+docker pull fxxy/news-aggregate
 
-CONTAINERID=$(docker run -d -m 700m --memory-swap="2000m" -e TASK='RSS' -e DB_NAME='newsaggregate' -e DB_HOST='172.17.0.2' -e DB_USER='postgres' -e DB_PW='u3fph3ßü98fg43f34f3' -e DB_PORT='5432' fxxy/news-aggregate-ml)
+CONTAINERID=$(docker run -d -m 700m --memory-swap="2000m" -e TASK='RSS' -e DB_NAME='newsaggregate' -e DB_HOST='172.17.0.2' -e DB_USER='postgres' -e DB_PW='u3fph3ßü98fg43f34f3' -e DB_PORT='5432' fxxy/news-aggregate)
 echo $CONTAINERID
 docker wait $CONTAINERID
 
