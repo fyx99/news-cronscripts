@@ -2,7 +2,7 @@
 
 qdocker pull fxxy/news-aggregate
 
-CONTAINERID=$(docker run -d -e TASK='REPROCESS_TEXT' -e DB_NAME='newsaggregate' -e DB_HOST='172.17.0.2' -e DB_USER='postgres' -e DB_PW='u3fph3ßü98fg43f34f3' -e DB_PORT='5432' fxxy/news-aggregate)
+CONTAINERID=$(docker run -d -e TASK='REPROCESS_TEXT' --env-file /env/drop.env fxxy/news-aggregate)
 echo $CONTAINERID
 docker wait $CONTAINERID
 
