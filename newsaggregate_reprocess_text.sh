@@ -2,7 +2,7 @@
 
 qdocker pull fxxy/news-aggregate
 
-CONTAINERID=$(docker run -d -e TASK='REPROCESS_TEXT' --env-file /env/drop.env fxxy/news-aggregate)
+CONTAINERID=$(docker run -d -e TASK='REPROCESS_TEXT' --network=dropnetwork --env-file /env/drop.env fxxy/news-aggregate)
 echo $CONTAINERID
 docker wait $CONTAINERID
 
