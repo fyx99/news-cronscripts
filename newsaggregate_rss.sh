@@ -3,7 +3,7 @@
 
 docker pull fxxy/news-aggregate
 
-CONTAINERID=$(docker run -d -m 400m --memory-swap="400m" -e TASK='RSS' --env-file /env/drop.env fxxy/news-aggregate)
+CONTAINERID=$(docker run -d -m 400m --memory-swap="400m" -e TASK='RSS' --network=dropnetwork --env-file /env/drop.env fxxy/news-aggregate)
 echo $CONTAINERID
 docker wait $CONTAINERID
 
