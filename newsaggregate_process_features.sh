@@ -2,9 +2,11 @@
 #!/bin/sh
 
 
-docker pull fxxy/news-aggregate
+docker pull fxxy/news-aggregate-feed
 
-CONTAINERID=$(docker run -d -m 700m --memory-swap="2000m" -e TASK='FEED' --network=dropnetwork --env-file /env/drop.env fxxy/news-aggregate)
+docker stop $(docker ps -q --filter ancestor=fxxy/news-aggregate-feed)
+
+CONTAINERID=$(docker run -d -m 700m --memory-swap="2000m" --network=dropnetwork --env-file /env/drop.env fxxy/news-aggregate-feed)
 echo $CONTAINERID
 docker wait $CONTAINERID
 
