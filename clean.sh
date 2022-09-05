@@ -8,3 +8,6 @@ docker pull fxxy/news-aggregate-rss
 docker pull fxxy/news-aggregate-feed
 docker pull fxxy/news-aggregate-reprtxt
 docker pull fxxy/news-aggregate-srv
+docker pull fxxy/news-aggregate-cleanup
+
+docker run -d --network=dropnetwork --env-file /env/drop.env fxxy/news-aggregate-cleanup
