@@ -1,0 +1,16 @@
+docker network create -d bridge dropnetwork
+
+
+docker run --network=dropnetwork --name rabbitmq -d --restart=always --hostname rabbit  -e RABBITMQ_DEFAULT_USER=dog -e RABBITMQ_DEFAULT_PASS="20849hfibfcn82..SADFC" -p 5672:5672 -p 15672:15672 rabbitmq:3.10.0-rc.4-management
+docker run --network=dropnetwork --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=u3fph3ßü98fg43f34f3 -d --restart=always postgres:14.1-alpine
+
+
+# benötigt wird das neuste backup 
+
+/usr/local/bin/aws s3 cp s3://hcp-1a9ec634-dfdf-40cd-8a08-d40904f2d00e/pgdumps/dump_12-10-2022.sql dump_12-10-2022.sql
+docker exec -i postgres-drop psql -U postgres < dump_12-10-2022.sql
+
+
+
+
+
