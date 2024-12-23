@@ -1,4 +1,4 @@
-# 📊 **News Operations Cron Scripts**
+# **NLP News Aggregator Scheduling**
 
 This repository contains various scripts supporting the **NewsAggregator Project**, which operates on a modest $5/month virtual machine with limited resources. The project ensures stable deployments through **Docker containerization** and leverages Linux's built-in **cron engine** for scheduling tasks.
 
