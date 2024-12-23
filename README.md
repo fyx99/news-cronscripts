@@ -4,25 +4,25 @@ Various files supporting the NewsAggregator Project. Project is operated on a sm
 
 ## Scripts:
 
-1. backup.sh
+**backup.sh**
 
-Purpose: Creates a backup of essential project files and databases.
+Purpose: Creates a backup of the postgres database to a S3 bucket using psql.
 
-2. clean.sh
+**clean.sh**
 
-Purpose: Cleans temporary and unnecessary files from the project directory.
+Purpose: Cleans temporary and unnecessary files from the VM + prunes all old Docker artefacts.
 
-3. newsaggregate_process_features.sh
+**newsaggregate_process_features.**
 
 Purpose: Processes news data to extract and analyze specific features.
 
-4. newsaggregate_reprocess_text.sh
+**newsaggregate_reprocess_text.sh**
 
-Purpose: Reprocesses text data for normalization and consistency.
+Purpose: Reprocesses text data in batches to clean and enhance the overall dataset (dedupe, filter out bad data etc.).
 
-5. newsaggregate_rss.sh
+**newsaggregate_rss.sh**
 
-Purpose: Fetches and aggregates news data from RSS feeds.
+Purpose: Fetches and aggregates news data from many RSS feeds using a Crawler.
 
 ## How to use:
 
