@@ -1,39 +1,40 @@
-# News Operations Cronscripts
+# 📊 **News Operations Cron Scripts**
 
-Various files supporting the NewsAggregator Project. Project is operated on a small 5$ month machine with very limited capacities. Basis for stable deployments is a Docker containerisation. This repo consists of multiple bash scripts running different components of the aggregation and feature engineering pipeline. All powered by the inbuilt cron engine from linux. The cron.txt file holds the entirety of the pipeline scheduling, including operation utilities like backups and cleaning of the file system.
+This repository contains various scripts supporting the **NewsAggregator Project**, which operates on a modest $5/month virtual machine with limited resources. The project ensures stable deployments through **Docker containerization** and leverages Linux's built-in **cron engine** for scheduling tasks.
 
-## Scripts:
+The `cron.txt` file defines the entire pipeline scheduling, including essential utilities like **backups** and **system cleanup**.
 
-**backup.sh**
+---
 
-Purpose: Creates a backup of the postgres database to a S3 bucket using psql.
+## 🚀 **Scripts Overview**
 
-**clean.sh**
+### 🗂️ **backup.sh**
+- **Purpose:** Creates a backup of the PostgreSQL database and uploads it to an **S3 bucket**.
 
-Purpose: Cleans temporary and unnecessary files from the VM + prunes all old Docker artefacts.
+### 🧹 **clean.sh**
+- **Purpose:** Cleans temporary and unnecessary files from the VM.
+- Prunes outdated **Docker artifacts**.
 
-**newsaggregate_process_features.**
+### 📊 **newsaggregate_process_features.sh**
+- **Purpose:** Processes news data to **extract and analyze specific features**.
 
-Purpose: Processes news data to extract and analyze specific features.
+### 📝 **newsaggregate_reprocess_text.sh**
+- **Purpose:** Reprocesses text data in batches to **clean** and **enhance** the dataset (e.g., deduplication, filtering invalid data).
 
-**newsaggregate_reprocess_text.sh**
+### 🌐 **newsaggregate_rss.sh**
+- **Purpose:** Fetches and aggregates news data from multiple **RSS feeds** using a web crawler.
 
-Purpose: Reprocesses text data in batches to clean and enhance the overall dataset (dedupe, filter out bad data etc.).
+---
 
-**newsaggregate_rss.sh**
+## 🛠️ **How to Use**
 
-Purpose: Fetches and aggregates news data from many RSS feeds using a Crawler.
+1. **Sync the Git Repository:**
+   ```bash
+   git pull
+   ```
 
-## How to use:
-
-1. Sync Git Repo to machine using:
-   
-```bash
-git pull
-```
-2. Navigate to the cron file and sync:
-   
- ```bash
- cp /var/spool/cron/crontabs/root cron.txt
-# -> to get cron file in repo
-```
+2. **Sync the Cron File:**
+   ```bash
+   cp /var/spool/cron/crontabs/root cron.txt
+   # -> This updates the cron configuration in the repository.
+   ```
