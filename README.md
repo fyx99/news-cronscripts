@@ -1,6 +1,6 @@
 # **News Aggregator Scheduling**
 
-This repository contains various scripts supporting the **NewsAggregator Project**, which operates on a modest $5/month virtual machine with limited resources. The project ensures stable deployments through **Docker containerization** and leverages Linux's built-in **cron engine** for scheduling tasks.
+This repository contains various scripts supporting the **NewsAggregator Project**, which operates on a $5/month virtual machine with very limited resources. The project ensures stable deployments through **Docker containerization** and leverages Linux's built-in **cron engine** for scheduling tasks.
 
 The `cron.txt` file defines the entire pipeline scheduling, including essential utilities like **backups** and **system cleanup**.
 
